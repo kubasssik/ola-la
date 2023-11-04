@@ -1,0 +1,76 @@
+.footer {
+    background-color: var(--purple-black);
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 3rem;
+    
+}
+.footer__block {
+    display: grid;
+}
+
+
+.footer__subscribe{
+    width: 100%;
+    background-color: var(--purple-white);
+    padding: 1rem;
+    margin: auto;
+}
+.footer__subscribe span {
+    font-size: 2rem;
+   
+}
+.footer__block label{
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+.footer__block label input{
+   font-size: 2rem;
+   padding: .3rem 1rem;
+   margin-top: 1rem;
+}
+.footer__block label button{
+    margin-top: 1rem;
+    background-color: var(--blue-white);
+    color: white;
+}
+.footer__block label button:hover{
+    background-color: var(--blue-black);
+}
+.footer__share{
+    display: grid;
+    font-size: 2rem;
+    padding: 1rem;
+}
+.footer__section {
+    
+}
+h6{
+   
+}
+.footer__section ul{
+    padding-top: 2rem; 
+}
+.footer__section ul li{
+   
+}
+
+
+.footer__section ul li a{
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+    color: var(--gray-white);
+}
+.footer__section ul li a:hover{
+    text-decoration: underline;
+    color: white;
+}
+
+.footer__p{
+    font-size: 1.2rem;
+    text-align: end;
+    padding: 1rem;
+    background-color: var(--purple-black);
+    color: white;
+}

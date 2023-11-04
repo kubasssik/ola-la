@@ -1,0 +1,104 @@
+.header {
+    position: relative;
+    z-index: 5000;
+}
+
+.header__logo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 3rem;
+}
+
+.header__nav {
+    position: relative;
+    background-color: var(--purple-normal);
+    display: grid;
+    grid-template-columns: 10% 40% 50%;
+    height: 10rem;
+    
+}
+
+
+.burger {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    width: 4.4rem;
+    height: 4.4rem;
+    overflow: hidden;
+}
+
+.search {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.search input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    border-radius: 10rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 2rem;
+    padding: 1.5rem 3rem;
+    box-shadow: 0 0 2rem .05rem var(--purple-white) inset;
+    border: .1rem solid rgba(255, 255, 255, 0.1);
+}
+
+.search input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.search input:hover::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search input:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.search span {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.search span:hover {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.material-symbols-outlined {
+    font-size: 4rem;
+}
+
+.nav__bottom ul {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.nav__bottom ul li a span {
+    color: white;
+    text-align: center;
+}
+
+.nav__bottom_ico {
+    font-size: 1.5rem;
+}
+
+.nav__bottom ul li a {
+    display: grid;
+    gap: .3rem;
+}

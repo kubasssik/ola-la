@@ -1,0 +1,101 @@
+.registr__header{
+    width: 100%;
+    background-color: var(--purple-white);
+    margin-bottom: 3rem;
+    padding: 3rem;
+}
+
+.main form{
+    width: 40%;
+    margin: 0 auto;
+    background-color: var(--purple-white);
+    display: grid;
+    gap: 3rem;
+    padding: 3rem;
+    border-radius: 1rem;
+    
+}
+.main form h2{
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+}
+.main form label{
+   
+}
+.main form label input{
+    width: 100%;
+    font-size:2rem;
+    padding: 1rem 2rem;
+    border-radius: 10rem;
+    background-color: rgba(255, 255, 255, 0.3); 
+    color: white;
+    box-shadow: 0 0 2rem .05rem var(--purple-white) inset;
+    border: .1rem solid rgba(255, 255, 255, 0.1);
+}
+
+.main form label input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+.main form label input:hover::placeholder{
+   color: rgba(255, 255, 255, 0.5);
+    
+}
+
+.main form label input:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+    
+}
+.registr__placeholder {
+}
+.registr__error {
+}
+.registr__input_password{
+    position: relative;
+}
+.material-symbols-outlined{
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    cursor: pointer;
+    font-size: 3rem;
+}
+
+.registr__btn {
+   
+}
+.registr__btn button{
+   background-color: var(--purple-black);
+   color: white;
+   padding: 1rem 2rem;
+   border-radius: 1rem;
+   font-size: 2rem;
+}
+.registr__btn button:hover{
+    background-color: var(--blue-white);
+    
+ }
+
+.main form a{
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.main form a:hover{
+    text-decoration: underline;
+}
+.registr__help{
+    display: grid;
+    gap: 1rem;
+}
+.registr__footer{
+    margin-top: 3rem;
+}
+.footer__p {
+}
+.footer__p a{
+    color: white;
+}
+

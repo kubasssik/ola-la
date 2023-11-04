@@ -1,0 +1,339 @@
+{% load static %}   
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <link rel="stylesheet" href="{% static 'style/header/header.css' %}">
+    {% block css %} {% endblock %}
+    <link rel="stylesheet" href="{% static 'style/footer/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'style/index.css' %}">
+    <link rel="stylesheet" href="{% static 'style/media.css' %}">
+    <link rel="stylesheet" href="{% static 'style/produucts/products.css' %}">
+<link rel="stylesheet" href="{% static 'style/produucts/product.css' %}">
+<link rel="stylesheet" href="{% static 'style/produucts/product-media.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="wrapper">
+            <header>
+                <div class="header">
+    
+                    <div class="header__logo">
+                        <h1>{{setting.namesite}}</h1>
+                        <h2>Симферополь</h2>
+                        <h2 class="phone__h2">{{setting.phone}}</h2>
+    
+                    </div>
+    
+    
+    
+                    <div class="header__nav">
+         
+    
+                        <div class="burger">
+                            <span class="b0 b"></span><span class="b1 b"></span><span class="b2 b"></span>
+                        </div>
+    
+    
+    
+                        <label class="search">
+                            <input type="text" placeholder="Поиск по сайту">
+                            <span class="material-symbols-outlined">search</span>
+                        </label>
+    
+    
+                        <nav class="nav__bottom">
+                            <ul>
+                                <!--Изменяет иконку дом/товары-->
+                                {% if is_hide %}
+                                <li><a href="{% url 'index' %}"><span class="material-symbols-outlined">home</span><span class="nav__bottom_ico">Главная</span></a></li>
+                                {% else %}
+                                <li><a href="{% url 'store:products' %}"><span class="material-symbols-outlined">category</span><span class="nav__bottom_ico">Каталог</span></a></li>
+                                {% endif %}
+    
+                                {% if user.is_authenticated %}
+                                <li><a href="#"><span class="material-symbols-outlined">favorite</span><span class="nav__bottom_ico">Избранное</span></a></li>
+                                {% endif %}
+    
+                                <li><a href="#"><span class="material-symbols-outlined">shopping_basket</span><span class="nav__bottom_ico">Корзина</span></a></li>
+                                <li><a href="#"><span class="material-symbols-outlined">support_agent </span><span class="nav__bottom_ico">Связь</span></a></li>
+                                
+                                <li><a href="#"><span class="material-symbols-outlined">help</span><span class="nav__bottom_ico">Помощь</span></a></li>
+                                <!--Админ панель-->
+                                {% if user.is_superuser or user.is_staff %}
+                                <li><a href="{% url 'admin:index' %}"><span class="material-symbols-outlined">admin_panel_settings</span><span class="nav__bottom_ico">Админ панель</span></a></li>
+                                {% endif %}
+    
+                                <!--Показывает/Скрывает Выход/Вход-Регистрация-->
+                                {% if user.is_authenticated %}
+                                <li><a href="{% url 'user:logout' %}"><span class="material-symbols-outlined">logout</span><span class="nav__bottom_ico">Выход</span></a></li>
+                                {% else %}
+                                <li><a href="{% url 'user:registration' %}"><span class="material-symbols-outlined">how_to_reg</span><span class="nav__bottom_ico">Регистрация</span></a></li>
+                                <li><a href="{% url 'user:login' %}"><span class="material-symbols-outlined">login</span><span class="nav__bottom_ico">Вход</span></a></li>
+                                {% endif %}  
+                            </ul>
+                        </nav>
+                    </div>
+                    
+                </div>
+            </header>
+    
+          
+            <main>
+                <div class="main__menu">
+                    <ul>
+                        {% for categorie in categories %}
+                        <li><a href="#"><img src="{{categorie.image.url}}" alt=""><span>{{ categorie.category }}</span></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="main__products">
+                    <aside>
+                        <nav>
+                            <ul>
+                                <li><a href="{% url 'store:products' %}">Все товары</a></li>
+                                {% for category in categories %}
+                                <li><a href="{% url 'store:category' category.id %}">{{ category.category }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    </aside>
+                    <section>
+                        <div class="product_only">
+                            <p>Категория/Список/товар</p>
+                            <div class="product__only_block">
+                                <img src="{{product.image.url}}" alt="">
+                                <div class="product__only_panel">
+                                    <h3>{{product.name}} {{product.weight}}</h3>
+                                    {% if product.sale %}
+                                    <span class="product__only_sticker discount">{{product.salenum}}%</span>
+                                    {% endif %}
+                                    {% if product.hit %}
+                                    <span class="product__only_sticker hit">Хит</span>
+                                    {% endif %}
+                                    {% if product.present %}
+                                    <span class="product__only_sticker present">Подарок</span>
+                                    {% endif %}
+                                    {% if product.new %}
+                                    <span class="product__only_sticker new">Новинка</span>
+                                    {% endif %}
+                                    
+                                    <span class="product__only_price">₽ 299.00</span>
+                                    <div class="product__only_count">
+                                        <button class="product__only_plus btn__only_plus">+</button>
+                                        <p>0</p>
+                                        <button class="product__only_minus btn__only_plus">-</button>
+                                    </div>
+                                    <button class="product__only_basket">Добавить в корзину</button>
+                                    <div class="product__only_table">
+                                        <table>
+                                            <tr>
+                                                <td>Бренд</td>
+                                                <td>{{product.brand}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Страна</td>
+                                                <td>{{product.state}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Эффект</td>
+                                                <td>{{product.effect}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="material-symbols-outlined td__star">star</td>
+                                                <td>4.5</td>
+                                            </tr>
+    
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="intelligence">
+                            <div class="intelligence__description">
+                                <h3>Описание</h3>
+                                <p>
+                                    Бессульфатный антивозрастной гель для душа Hempz Age Defying Herbal Body Wash с
+                                    гликолиевой
+                                    кислотой, полипептидами, кофеином и экстрактом морских водорослей – для увлажнения,
+                                    гладкости, тонуса и молодости вашей кожи. Специальная формула с натуральными
+                                    растительными
+                                    маслами сокращает появление мелких морщин и восстанавливает здоровый оттенок кожи. Без
+                                    парабенов и глютенов. 100% веган.
+    
+                                    Аромат: Ваниль и мускус
+    
+                                    Активные компоненты
+                                    Формула на основе 100% натурального масла семян конопли, масла карите,масла
+                                    Авокадо,экстрактов витаминного комплекс А, В, С, Е, кокоса, арбуза, ромашки,алоэ вера.
+    
+                                    Тип кожи
+                                    Подходит для всех типов кожи
+    
+                                    Состав:
+                                    Полипептиды, кофеин, экстракт морских водорослей, витамины А, Е, С, масло янгу, экстракт
+                                    яблока, экстракт императы. Water/Aqua/Eau, Cocamidopropyl Betaine, Sodium Cocoyl
+                                    Isethionate, Disodium Laureth Sulfosuccinate, Glycerin, Fragrance (Parfum),
+                                    Cocamidopropyl
+                                    Hydroxysultaine, Benzyl Benzoate, Acrylates Copolymer, Cannabis Sativa Seed Oil, Aloe
+                                    Barbadensis Leaf Juice, Caffeine, Butyrospermum Parkii (Shea) Butter, Laminaria Digitata
+                                    Extract, Panax Ginseng Root Extract, Symphytum Officinale Leaf Extract, Chamomilla
+                                    Recutita
+                                    (Matricaria) Flower Extract, Cucumis Sativus (Cucumber) Fruit Extract, Citric Acid,
+                                    Ascorbic
+                                    Acid, Althaea Officinalis Root Extract, Calendula Officinalis Flower Extract, Zingiber
+                                    Officinale (Ginger) Root Extract, Helianthus Annuus (Sunflower) Seed Oil, Methyl
+                                    Gluceth-10,
+                                    Phenoxyethanol, Glycol Distearate, PEG-120 Methyl Glucose Dioleate, Guar
+                                    Hydroxypropyltrimonium Chloride, Sodium Hydroxide, Disodium EDTA, Panthenol,
+                                    Hydroxyisohexyl
+                                    3-Cyclohexene, Carboxaldehyde, Hydroxypropyl Cyclodextrin, Benzoic Acid, Iodopropynyl
+                                    Butylcarbamate, Yellow 6 (CI 15985), Retinyl Palmitate, Tocopheryl Acetate, Tocopherol,
+                                    Yellow 5 (CI 19140), Butylene Glycol, Potassium Sorbate, Sodium Benzoate, Carbomer,
+                                    Sodium
+                                    Lactate, Polysorbate 20, Palmitoyl Pentapeptide-4
+                                </p>
+                            </div>
+                            <div class="intelligence__application">
+                                <h3>Применение</h3>
+                                <p>
+                                    Растереть по влажной коже, смыть. Используйте салфетку или пуховку для получения
+                                    обильной
+                                    пены. Для получения наилучшего результата используйте в КОМПЛЕКСЕ с любым увлажняющим
+                                    молочком или кремом питательным HEMPZ BODY. Подходит для ежедневного применения.
+                                </p>
+                            </div>
+                            <div class="intelligence__reviews">
+                            
+                                <div class="reviews">
+                                    <div class="review">
+    
+                                        <p class="review__description">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos fugit, mollitia
+                                            assumenda
+                                            dignissimos minus quo laudantium consequuntur voluptatum? Saepe natus
+                                            repudiandae illo
+                                            itaque omnis possimus doloribus reprehenderit harum modi volupta...<a
+                                                href="#">Подробнее</a>
+                                        </p>
+                                        <ul>
+                                            <li class="material-symbols-outlined">star</li>
+                                            <li class="material-symbols-outlined">star</li>
+                                            <li class="material-symbols-outlined">star</li>
+                                            <li class="material-symbols-outlined">star</li>
+                                            <li class="material-symbols-outlined">star</li>
+                                        </ul>
+    
+                                    </div>
+    
+                                    <div class="review">
+    
+                                        <p class="review__description">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos fugit, mollitia
+                                            assumenda
+                                            dignissimos minus quo laudantium consequuntur voluptatum? Saepe natus
+                                            repudiandae illo
+                                            itaque omnis possimus doloribus reprehenderit harum modi volupta...<a
+                                                href="#">Подробнее</a>
+                                        </p>
+                                        <ul>
+                                            <li class="material-symbols-outlined">star</li>
+                                            <li class="material-symbols-outlined">star</li>
+                                            <li class="material-symbols-outlined">star</li>
+                                            <li class="material-symbols-outlined">star</li>
+                                            <li class="material-symbols-outlined">star</li>
+                                        </ul>
+    
+                                    </div>
+                                </div>
+                                <form action="#">
+                                    <label>
+                                        <p>USER</p>
+                                        <span class="add__intelligence_reviews"></span>
+                                        <textarea placeholder="Текст комментария"></textarea>
+                                        <span class="registr__error"></span>
+                                    </label>
+                                    <ul>
+                                <li class="material-symbols-outlined">star</li>
+                                <li class="material-symbols-outlined">star</li>
+                                <li class="material-symbols-outlined">star</li>
+                                <li class="material-symbols-outlined">star</li>
+                                <li class="material-symbols-outlined">star</li>
+                            </ul>
+    
+                            <button>Добавит</button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+            
+           
+            <footer>
+                <div class="footer">
+    
+                    <section class="footer__section">
+                        <h6>Меню магазина</h6>
+                        <ul>
+                            <li><a href="">Каталог</a></li>
+                            <li><a href="">Бренд</a></li>
+                            <li><a href="">Хиты</a></li>
+                            <li><a href="">Новинки</a></li>
+                            <li><a href="">Подарки</a></li>
+                            <li><a href="">Скидка</a></li>
+                        </ul>
+                    </section>
+                    <section class="footer__section">
+                        <h6>Мы в соцсетях</h6>
+                        <ul>
+                            <li><a href="">ВКонтакте</a></li>
+                            <li><a href="">Viber</a></li>
+                            <li><a href="">Одноклассники</a></li>
+                            <li><a href="">Телеграм</a></li>
+                        </ul>
+                    </section>
+    
+                    <section class="footer__section">
+                        <h6>Компания</h6>
+                        <ul>
+                            <li><a href="">О нас</a></li>
+                            <li><a href="">Реквезиты</a></li>
+                            <li><a href="">Контакты</a></li>
+                            <li><a href="">Как найти</a></li>
+                            <li><a href="">Политика Безопасности</a></li>
+                        </ul>
+                    </section>
+                    <div class="footer__block">
+                        <h6>{{setting.namesite}}</h6>
+                        <h2>{{setting.phone}}</h2>
+    <div class="footer__share">
+        <span>Поделиться:</span>
+    <div class="ya-share2" data-curtain data-shape="round" 
+    data-services="vkontakte,odnoklassniki,telegram,viber,whatsapp,moimir"></div>
+    </div>
+    
+                       <div class="footer__subscribe">
+                       
+                        <span>Получать скидки</span>
+                        <label>
+                            <input type="text">
+                            <button>Хочу</button>
+                        </label>
+                       </div>
+                    </div>
+    
+    
+                </div>
+                <p class="footer__p">
+                    © Название сайта - интернет-магазин косметики, 2023
+                </p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

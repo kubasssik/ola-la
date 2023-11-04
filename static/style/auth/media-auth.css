@@ -1,0 +1,63 @@
+@media (max-width: 1466px) {
+
+
+}
+
+@media (max-width: 1366px) {
+
+  
+}
+
+@media (max-width: 1266px) {
+
+  
+}
+
+@media (max-width: 1068px) {
+
+ 
+}
+
+@media (max-width: 968px) {
+    .main form label input{
+        font-size:3rem;
+    }
+    .main form a{
+        font-size: 2rem;
+    }
+    .registr__btn button{
+        font-size: 3rem;
+     }
+    
+}
+
+@media (max-width: 768px) {
+
+
+}
+
+@media (max-width: 667px) {
+    .main form label input{
+        font-size:4rem;
+    }    
+    .main form{
+        width: 80%;   
+    } 
+    .main form a{
+        font-size: 2.5rem;
+    }
+    .registr__btn button{
+        font-size: 4rem;
+     }
+
+}
+
+@media (max-width: 468px) {
+    .main form{
+        width: 100%;   
+    }
+}
+
+@media (max-width: 368px) {
+    
+ }

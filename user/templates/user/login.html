@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+      
+    <link rel="stylesheet" href="{% static 'style/header/header.css' %}">
+    <link rel="stylesheet" href="{% static 'style/auth/auth.css' %}">
+    <link rel="stylesheet" href="{% static 'style/footer/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'style/index.css' %}">
+    <link rel="stylesheet" href="{% static 'style/auth/media-auth.css' %}">
+
+
+ 
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="registr__header">
+                <h1><a href="{% url 'index' %}"></a>Имя Сайта</h1>
+            </div>
+
+        </header>
+
+
+        <main>
+            <div class="main">
+                <form action="{% url 'user:login' %}" method="post">
+                    {% csrf_token %}
+                    <h2>Вход</h2>
+                    <label>
+                        <span class="registr__placeholder"></span>
+                        {{ form.username }}
+                        <span class="registr__error"></span>
+                    </label>
+                    <label>
+                        <span class="registr__placeholder"></span>
+                        <div class="registr__input_password">
+                       
+                            {{ form.password }}
+                            <span class="material-symbols-outlined eye">visibility_off</span>
+                        </div>
+                        <span class="registr__error"></span>
+                    </label>
+
+                    <div class="registr__btn">
+
+                        <button type="submit">Вход</button>
+                    </div>
+                    <div class="registr__help">
+                        <a href="#">Забыли пароль или логин? Восстановить</a>
+                        <a href="{% url 'index' %}">Главаная</a>
+                        <a href="{% url 'user:registration' %}">Нет аккаунта? Регистрация</a>
+                    </div>
+                </form>
+
+            </div>
+        </main>
+        <footer>
+            <div class="registr__footer">
+
+                <p class="footer__p">
+                    <a href="">Политика Безопасности</a>
+                    © Название сайта - интернет-магазин косметики, 2023
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</body>
+<script src="{% static 'js/auth.js' %}" type="module"></script>
+
+</html>

@@ -1,0 +1,46 @@
+@media (max-width: 1466px) {
+
+
+}
+
+@media (max-width: 1366px) {
+
+  
+}
+
+@media (max-width: 1266px) {
+
+  
+}
+
+@media (max-width: 1068px) {
+
+ 
+}
+
+@media (max-width: 968px) {
+
+    
+}
+
+@media (max-width: 768px) {
+
+
+}
+
+@media (max-width: 667px) {
+    .product__only_block {
+        
+        grid-template-columns:1fr;
+        
+    }
+
+}
+
+@media (max-width: 468px) {
+    
+}
+
+@media (max-width: 368px) {
+    
+ }

@@ -1,0 +1,196 @@
+{% extends 'home/base.html' %}
+{% load static%}
+{% block css %}
+<link rel="stylesheet" href="{% static 'style/main/main.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+
+   
+
+{% for setting in settings %}
+    <div class="main">
+
+        <!--Слайдер-->
+        <div class="slider-container">
+            <div class="slider">
+                <img src="https://i.postimg.cc/nhsTGkLQ/1.png" alt="Белый пушистый кот">
+                <img src="https://i.postimg.cc/cLVh9nKk/2.png" alt="Рыжий пушистый кот в джинсах">
+                <img src="https://i.postimg.cc/4NxWmZkP/3.png" alt="Бело-рыжий пушистый кот">
+                <img src="https://i.postimg.cc/FFZPrzq1/8.png" alt="Золотистый пушистый кот">
+                <img src="https://i.postimg.cc/jd3Zf9Rb/7.png" alt="Золотистый пушистый кот">
+            </div>
+            <button class="prev-button slider__button">&lt;</button>
+            <button class="next-button slider__button">&gt</button>
+        </div>
+
+        <!--На товары дня работает только скидка-->
+        <div class="products">
+            <div class="product">
+                <span class="discount sticker">40%</span>
+                <img src="{% static 'img/jpg/--.jpg' %}" alt="">
+                <span class="product__price">₽ 119,00/<span class="price">299.00</span></span>
+                <h3><a href="product.html">Название продукта длинное еще длинное </a><span
+                        class="product__weight">300ml</span></h3>
+                <p>Категория: <a href="product.html">Уход за лицом</a></p>
+                <div class="product__like">
+                    <ul>
+                        <li class="material-symbols-outlined">star</li>
+                        <li>4.7</li>
+                        <li class="material-symbols-outlined">chat_bubble</li>
+                        <li>0</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--О нас-->
+        <div class="about">
+            <div class="about__img">
+                <img src="{{setting.image}}" alt="">
+            </div>
+
+            <div class="about__description">
+                <h4 class="h4">{{setting.namesite}}</h4>
+                <p>
+                    {{setting.descriptionsite}}
+                </p>
+            </div>
+        </div>
+        <!--Новинки-->
+        <div class="products">
+            <div class="product">
+                <span class="new sticker">Новинка</span>
+                <img src="{% static 'img/jpg/--.jpg' %}" alt="">
+                <span class="product__price">₽ 299.00</span>
+                <h3><a href="product.html">Название продукта длинное еще длинное </a><span
+                        class="product__weight">300ml</span></h3>
+                <p>Категория: <a href="#">Название категории</a></p>
+                <div class="product__like">
+                    <ul>
+                        <li class="material-symbols-outlined">star</li>
+                        <li>4.5</li>
+                        <li class="material-symbols-outlined">chat_bubble</li>
+                        <li>0</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--Спецпредложение-->
+        <div class="offer">
+
+            <img src="{% static 'img/jpg/cos.jpg' %}" alt="">
+            <div class="offer__menu">
+                <h3 class="offer__h3">−75% на успокаивающий крем SUR.MEDIC+</h3>
+                <p>Голубой крем с азуленом от раздражения и сухости с азуленом от раздражения и сухости с
+                    азуленом от раздражения и сухости с азуленом от раздражения и сухости с азуленом от
+                    раздражения и сухости</p>
+                <span class="product__price price__font_size">₽ 124,00/<span class="price">499.00</span></span>
+                <a href="#">Купить</a>
+            </div>
+        </div>
+        <!--Хит}-->
+        <div class="products">
+            <div class="product">
+                <span class="hit sticker">Хит</span>
+                <img src="{% static 'img/jpg/--.jpg' %}" alt="">
+                <span class="product__price">₽ 299.00</span>
+                <h3><a href="product.html">Название продукта длинное еще длинное </a><span
+                        class="product__weight">300ml</span></h3>
+                <p>Категория: <a href="#">Длинное название категории</a></p>
+                <div class="product__like">
+                    <ul>
+                        <li class="material-symbols-outlined">star</li>
+                        <li>4.5</li>
+                        <li class="material-symbols-outlined">chat_bubble</li>
+                        <li>0</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--Спецпредложение-->
+        <div class="offer offer__blue">
+
+            <img src="{% static 'img/jpg/cos.jpg' %}" alt="">
+            <div class="offer__menu offer__menu_purple">
+                <h3 class="offer__h3">−75% на успокаивающий крем SUR.MEDIC+</h3>
+                <p>Голубой крем с азуленом от раздражения и сухости с азуленом от раздражения и сухости с
+                    азуленом от раздражения и сухости с азуленом от раздражения и сухости с азуленом от
+                    раздражения и сухости</p>
+                <span class="product__price price__font_size">₽ 124,00/<span class="price">499.00</span></span>
+                <a href="#">Купить</a>
+            </div>
+        </div>
+        <!--Подарки-->
+        <div class="products">
+            <div class="product">
+                <span class="present sticker">Подарок</span>
+                <img src="{% static 'img/jpg/--.jpg' %}" alt="">
+                <span class="product__price">₽ 299.00</span>
+                <h3><a href="product.html">Название продукта длинное еще длинное </a><span
+                        class="product__weight">300ml</span></h3>
+                <p>Категория: <a href="#">Название категории</a></p>
+                <div class="product__like">
+                    <ul>
+                        <li class="material-symbols-outlined">star</li>
+                        <li>3.5</li>
+                        <li class="material-symbols-outlined">chat_bubble</li>
+                        <li>0</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--Спецпредложение-->
+        <div class="offer">
+
+            <img src="{% static 'img/jpg/cos.jpg' %}" alt="">
+            <div class="offer__menu">
+                <h3 class="offer__h3">−75% на успокаивающий крем SUR.MEDIC+</h3>
+                <p>Голубой крем с азуленом от раздражения и сухости с азуленом от раздражения и сухости с
+                    азуленом от раздражения и сухости с азуленом от раздражения и сухости с азуленом от
+                    раздражения и сухости</p>
+                <span class="product__price price__font_size">₽ 124,00/<span class="price">499.00</span></span>
+                <a href="#">Купить</a>
+            </div>
+        </div>
+
+        <!--Отзывы-->
+        <div class="reviews">
+            <div class="review">
+                <h5>Отзывы о товарe:</h5>
+                <p class="review__product">
+                    Пенка для глубокого очищения пор Manyo PURE DEEP CLEANSING FOAM 200 мл
+                </p>
+                <p class="review__description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos fugit, mollitia assumenda
+                    dignissimos minus quo laudantium consequuntur voluptatum? Saepe natus repudiandae illo
+                    itaque omnis possimus doloribus reprehenderit harum modi volupta...<a href="#">Подробнее</a>
+                </p>
+                <ul>
+                    <li class="material-symbols-outlined">star</li>
+                    <li class="material-symbols-outlined">star</li>
+                    <li class="material-symbols-outlined">star</li>
+                    <li class="material-symbols-outlined">star</li>
+                    <li class="material-symbols-outlined">star</li>
+                </ul>
+
+            </div>
+        </div>
+        <!--Магазин-->
+        <div class="shop">
+
+            <h2 class="shop__h2">{{setting.address}}</h2>
+            <a href="#">Подробнее о магазине</a>
+            <div class="shop__photo">
+                <img src="{{setting.image_1}}" alt="Белый пушистый кот">
+                <img src="{{setting.image_2}}" alt="Рыжий пушистый кот в джинсах">
+                <img src="{{setting.image_3}}" alt="Бело-рыжий пушистый кот">
+                <img src="{{setting.image_4}}" alt="Золотистый пушистый кот">
+                <img src="{{setting.image_5}}" alt="Золотистый пушистый кот">
+            </div>
+
+        </div>
+        {% endfor %}
+{% endblock %}

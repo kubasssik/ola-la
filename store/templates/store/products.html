@@ -1,0 +1,120 @@
+{% extends 'home/base.html' %}
+{% load static%}
+{% block css %}
+<link rel="stylesheet" href="{% static 'style/produucts/products.css' %}">
+<link rel="stylesheet" href="{% static 'style/produucts/product.css' %}">
+<link rel="stylesheet" href="{% static 'style/produucts/product-media.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+
+<!---->
+    <div class="main__products">
+        <aside>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'store:products' %}">Все товары</a></li>
+                    {% for category in categories %}
+                    <li><a href="{% url 'store:category' category.id %}">{{ category.category }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </aside>
+
+      
+        <section>
+            <p><a href="{% url 'store:products' %}">Каталог</a>/<a href="{% url 'store:products' %}">Все товары</a>/</p>
+
+            <div class="descriptin__category">
+                {% for setting in settings %}
+                <h4>{{setting.namesite}}</h4>
+                
+                <p class="descriptin__P">
+                    {{setting.descriptionsite | truncatewords:50 }} <a href="#">Подробнее</a>
+                </p>
+                {% endfor %}
+            </div>
+
+            <div class="products">
+                
+                {% for product in products %}
+                <div class="product__list">
+                    {% if product.sale %}
+                    <span class="discount sticker">{{product.salenum}}%</span>
+                    {% endif %}
+                    {% if product.hit %}
+                    <span class="hit sticker">Хит</span>
+                    {% endif %}
+                    {% if product.present %}
+                    <span class="present sticker">Подарок</span>
+                    {% endif %}
+                    {% if product.new %}
+                    <span class="new sticker">Новинка</span>
+                    {% endif %}
+                    <img src="  {{product.image.url}}" alt="">
+                    
+                    {% if product.sale %}
+                    <span class="product__price sale"><span class="price">{{product.price}}</span></span>
+
+                    {% else %}
+                    <span class="product__price">₽ 119,00</span>
+                    {% endif %}
+                    <h3><a href="{% url 'store:product' product.id %}">{{product.name}}</a>
+                        <span class="product__weight"> {{product.weight}}</span></h3>
+                    <p>Категория: <a href="#">{{product.category}}</a></p>
+                    <div class="product__like">
+                        <ul>
+                            <li class="material-symbols-outlined">star</li>
+                            <li>4.7</li>
+                            <li class="material-symbols-outlined">chat_bubble</li>
+                            <li>0</li>
+                        </ul>
+                    </div>
+                    <div class="product__count">
+                        <button class="product__plus">+</button>
+                        <p>0</p>
+                        <button class="product__minus">-</button>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <a class="add__basket" href="#">  Добавить в корзину</a>
+                    {% else %}
+                    <a class="add__basket" href="{% url 'user:registration' %}">Добавить в корзину</a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+    <div class="pagination">
+        
+        <span class="pagination__span">
+           
+            {% if products.has_previous %}
+            {% if products.number == products.paginator.num_pages %}
+                <a class=" btn__pagination" href="?page=1">Первая</a>
+                <a class=" btn__pagination" href="?page={{ products.previous_page_number }}">&laquo; Назад</a>
+                {% else %}
+                <a class=" btn__pagination" href="?page=1">Первая</a>
+                <a class=" btn__pagination" href="?page={{ products.paginator.num_pages }}">Последняя</a>
+            {% endif %}
+            {% endif %}
+            <span class="pagination__span">
+                <span class="pagination__num">{{ products.number }}</span> из {{ products.paginator.num_pages }}.
+            </span>
+            {% if products.has_next %}
+            {% if products.number == 1 %}
+            <a class="btn__pagination" href="?page={{ products.paginator.num_pages }}">Последняя</a>
+            <a class="btn__pagination" href="?page={{ products.next_page_number }}">Далее &raquo;</a>
+            {%else%}
+            <a class="btn__pagination" href="?page={{ products.previous_page_number }}">&laquo; Назад</a>
+            <a class="btn__pagination" href="?page={{ products.next_page_number }}">Далее &raquo;</a>
+            {% endif %}  
+            {% endif %}
+            
+        </span>
+        
+    </div>
+
+{% endblock %}

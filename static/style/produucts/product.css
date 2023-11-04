@@ -1,0 +1,173 @@
+.product_only {
+}
+.product__only_block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+}
+.product__only_block img{
+    width: 100%;
+   
+}
+.product__only_block h3{
+    font-size: 3rem;
+   
+}
+.product__only_panel {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    
+}
+.product__only_price {
+    color: red;
+    font-size: 4rem;
+}
+
+.product__only_count {
+    margin-top: 2rem;
+    display: grid;
+    grid-auto-flow: column;
+    margin: auto;
+}
+.btn__only_plus{
+    font-size: 3rem;
+    padding: 3rem;
+    background-color: var(--purple-normal);
+    color: white;
+}
+.product__only_plus {
+    border-radius: 1rem 0 0 1rem;
+}
+.product__only_minus {
+    border-radius: 0 1rem 1rem 0;
+}
+
+.product__only_count p{
+    font-size: 3rem;
+    justify-self: center;
+    align-self: center;
+    border: .05rem solid var(--purple-normal);
+    padding: 3.5rem;
+}
+.product__only_basket {
+    margin: auto;
+    font-size: 3rem;
+    padding: 3rem;
+    background-color: var(--purple-normal);
+    color: white;
+    border-radius: 1rem;
+}
+.product__only_table td:nth-child(even){
+    font-size: 2.5rem;
+    text-align: start;
+    padding: 1rem;
+}
+.product__only_table td:nth-child(odd){
+    font-weight: bold;
+    text-align: end;
+    font-size: 3rem;
+  
+    padding: 1rem;
+}
+.td__star{
+    color:rgb(255, 166, 0) ;
+    font-size: 3rem;
+}
+.material-symbols-outlined {
+}
+
+.hit{
+    background: linear-gradient(rgb(255, 195, 83) 20%,rgb(255, 166, 0), rgb(255, 195, 83) 80%);
+    border: .1rem solid rgb(255, 166, 0);
+ 
+}
+
+
+.product__only_sticker{
+    position: absolute;
+    top: 8%;
+    left: -30%;
+    color: white;
+    font-size: 3rem;
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    -webkit-text-stroke: .05rem black;
+    box-shadow: 0 0 .5rem 0 black;
+    font-weight: bold;
+}
+.intelligence{
+    padding: 3rem;
+}
+.intelligence h3{
+    font-size: 3rem;
+    font-weight: bold;
+}
+.intelligence p{
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+.intelligence__description {
+}
+.intelligence__application {
+}
+.intelligence__reviews {
+    
+}
+
+.intelligence__reviews textarea{
+    
+}
+
+.intelligence__reviews textarea{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    resize: none;
+    width: 95%;
+    height: 15rem;
+    font-size:2rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.3); 
+    
+    box-shadow: 0 0 2rem .05rem var(--purple-white) inset;
+   
+}
+
+
+/*--Комментарии--*/
+.reviews{
+    display: grid;
+    
+    gap: 3rem;
+    padding: 3rem;
+   
+}
+
+.review{
+    background-color: white;
+    box-shadow: 0 0 0rem .3rem var(--purple-opacity);
+    padding: 3rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.review__product{
+   font-size: 1.8rem;
+   font-weight: bold;
+}
+.review__description{
+    font-size: 1.8rem; 
+    color: var(--purple-black);
+}
+.review__description a{
+    color: var( --blue-black);
+}
+.review ul li {
+    color: rgb(255, 166, 0);
+    font-weight: bold;
+}
+
+
+
